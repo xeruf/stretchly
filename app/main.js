@@ -1486,18 +1486,8 @@ function getTrayMenuTemplate () {
             const untilMorning = new UntilMorning(settings).msToSunrise()
             pauseBreaks(untilMorning)
           }
-        }, {
-          type: 'separator'
-        }, {
-          label: i18next.t('main.indefinitely'),
-          click: function () {
-            pauseBreaks(1)
-          }
         }
       ]
-    }, {
-      label: i18next.t('main.resetBreaks'),
-      click: resetBreaks
     })
   }
 
@@ -1510,27 +1500,10 @@ function getTrayMenuTemplate () {
     }
   })
 
-  if (global.isContributor) {
-    trayMenu.push({
-      label: i18next.t('main.contributorPreferences'),
-      click: function () {
-        createContributorSettingsWindow()
-      }
-    }, {
-      label: i18next.t('main.syncPreferences'),
-      click: function () {
-        createSyncPreferencesWindow()
-      }
-    })
-  }
-
   trayMenu.push({
-    type: 'separator'
-  }, {
-    label: i18next.t('main.quitStretchly'),
-    role: 'quit',
+    label: i18next.t('main.contributorPreferences'),
     click: function () {
-      app.quit()
+      createContributorSettingsWindow()
     }
   })
 
