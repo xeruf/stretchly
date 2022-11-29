@@ -1314,43 +1314,22 @@ function getTrayMenuTemplate () {
       label: i18next.t('main.pause'),
       submenu: [
         {
-          label: i18next.t('utils.minutes', { count: 30 }),
+          label: i18next.t('utils.minutes', {count: 30}),
           click: function () {
             pauseBreaks(1800 * 1000)
           }
-        }, {
-          label: i18next.t('main.forHour'),
+        },  {
+          label: i18next.t('utils.hours', {count: 1}),
           click: function () {
             pauseBreaks(3600 * 1000)
           }
         }, {
-          label: i18next.t('main.for2Hours'),
+          label: i18next.t('utils.hours', {count: 3}),
           click: function () {
-            pauseBreaks(3600 * 2 * 1000)
-          }
-        }, {
-          label: i18next.t('main.for5Hours'),
-          click: function () {
-            pauseBreaks(3600 * 5 * 1000)
-          }
-        }, {
-          label: i18next.t('main.untilMorning'),
-          click: function () {
-            const untilMorning = new UntilMorning(settings).msToSunrise()
-            pauseBreaks(untilMorning)
-          }
-        }, {
-          type: 'separator'
-        }, {
-          label: i18next.t('main.indefinitely'),
-          click: function () {
-            pauseBreaks(1)
+            pauseBreaks(3600 * 3 * 1000)
           }
         }
       ]
-    }, {
-      label: i18next.t('main.resetBreaks'),
-      click: resetBreaks
     })
   }
 
@@ -1363,27 +1342,10 @@ function getTrayMenuTemplate () {
     }
   })
 
-  if (global.shared.isContributor) {
-    trayMenu.push({
-      label: i18next.t('main.contributorPreferences'),
-      click: function () {
-        createContributorSettingsWindow()
-      }
-    }, {
-      label: i18next.t('main.syncPreferences'),
-      click: function () {
-        createSyncPreferencesWindow()
-      }
-    })
-  }
-
   trayMenu.push({
-    type: 'separator'
-  }, {
-    label: i18next.t('main.quitStretchly'),
-    role: 'quit',
+    label: i18next.t('main.contributorPreferences'),
     click: function () {
-      app.quit()
+      createContributorSettingsWindow()
     }
   })
 
