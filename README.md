@@ -543,6 +543,7 @@ You can help to translate Stretchly on [Weblate](https://hosted.weblate.org/enga
 - Nai You-Ran, [@skyran1278](https://github.com/skyran1278)
 - Lorenzo García Rivera, @lorenzogrv, [lorenzogrv.tech](https://lorenzogrv.tech)
 - Aleh, [@alehpa](https://github.com/alehpa)
+- Philip Wintersteiner, [@Wikiwix](https://github.com/wikiwix)
 
 Also see Github's list of [contributors](https://github.com/hovancik/stretchly/graphs/contributors).
 
@@ -556,7 +557,6 @@ Also see Github's list of [contributors](https://github.com/hovancik/stretchly/g
  - http://web.stanford.edu/dept/EHS/prod/general/ergo/microbreaks.html
  - https://www.spineuniverse.com/wellness/ergonomics/workstation-ergonomics-take-break
  - http://www.lifehack.org/articles/productivity/21-counter-intuitive-break-ideas-to-boost-your-productivity-at-work.html
- - http://www.latofonts.com/lato-free-fonts/
  - http://www.huffingtonpost.com/2012/07/24/sitting-at-work-why-its-dangerous-alternatives_n_1695618.html
  - http://www.unm.edu/~lkravitz/Article%20folder/sittingUNM.html
  - https://www.ninds.nih.gov/News-Events/News-and-Press-Releases/Press-Releases/Want-learn-new-skill-Take-some-short-breaks

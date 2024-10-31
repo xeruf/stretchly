@@ -118,7 +118,7 @@ describe('canSkip and canPostpone', () => {
 
   describe('minutesRemaining', () => {
     it('one minute remaining', () => {
-      minutesRemaining(1000).should.equal(1)
+      minutesRemaining(60000).should.equal(1)
     })
     it('less then one minute remaining', () => {
       minutesRemaining(1).should.equal(1)
