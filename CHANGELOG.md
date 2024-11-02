@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 - error when end break shortcut is not set
+- time in tray shows the correct number (and matches the tooltip value)
 
 ### Changed
 - improved break window loading
