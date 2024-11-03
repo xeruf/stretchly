@@ -479,7 +479,7 @@ function trayIconPath () {
     darkMode: nativeTheme.shouldUseDarkColors,
     platform: process.platform,
     timeToBreakInTray: settings.get('timeToBreakInTray'),
-    timeToBreak: Utils.minutesRemaining(breakPlanner.scheduler.timeLeft),
+    timeToBreak: Utils.minutesRemaining(breakPlanner.timeToNextBreak),
     reference: breakPlanner.scheduler.reference
   }
   const trayIconFileName = new AppIcon(params).trayIconFileName
