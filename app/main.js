@@ -57,7 +57,6 @@ let myStretchlyWindow = null
 let settings
 let pausedForSuspendOrLock = false
 let nextIdea = null
-let appIsQuitting = false
 let updateChecker
 let currentTrayIconPath = null
 let currentTrayMenuTemplate = null
@@ -161,9 +160,16 @@ app.on('ready', initialize)
 app.on('window-all-closed', () => {
   // do nothing, so app wont get closed
 })
-app.on('before-quit', () => {
-  appIsQuitting = true
-  globalShortcut.unregisterAll()
+app.on('before-quit', (event) => {
+  if ((breakPlanner.scheduler.reference === 'finishMicrobreak' && settings.get('microbreakStrictMode')) ||
+      (breakPlanner.scheduler.reference === 'finishBreak' && settings.get('breakStrictMode'))
+  ) {
+    log.info('Stretchly: preventing app closure (in break with strict mode)')
+    event.preventDefault()
+  } else {
+    globalShortcut.unregisterAll()
+    app.quit()
+  }
 })
 
 async function initialize (isAppStart = true) {
@@ -181,7 +187,7 @@ async function initialize (isAppStart = true) {
       },
       migrations: {
         '1.13.0': store => {
-          if (store.get('pauseBreaksShortcut')) {
+          if (store.has('pauseBreaksShortcut')) {
             store.set('pauseBreaksToggleShortcut', store.get('pauseBreaksShortcut'))
             log.info(`Stretchly: settings pauseBreaksToggleShortcut to "${store.get('pauseBreaksShortcut')}"`)
             store.delete('pauseBreaksShortcut')
@@ -189,9 +195,19 @@ async function initialize (isAppStart = true) {
           } else {
             log.info('Stretchly: not migrating pauseBreaksShortcut')
           }
-          if (store.get('pauseBreaksShortcut')) {
+          if (store.has('pauseBreaksShortcut')) {
             store.delete('resumeBreaksShortcut')
             log.info('Stretchly: removing resumeBreaksShortcut')
+          }
+        },
+        '1.17.0': store => {
+          if (store.has('showBreakActionsInStrictMode')) {
+            store.set('showTrayMenuInStrictMode', store.get('showBreakActionsInStrictMode'))
+            log.info(`Stretchly: settings showTrayMenuInStrictMode to "${store.get('showBreakActionsInStrictMode')}"`)
+            store.delete('showBreakActionsInStrictMode')
+            log.info('Stretchly: removing showBreakActionsInStrictMode')
+          } else {
+            log.info('Stretchly: not migrating showBreakActionsInStrictMode')
           }
         }
       },
@@ -774,10 +790,10 @@ function startMicrobreak () {
     microbreakWinLocal.setAlwaysOnTop(!showBreaksAsRegularWindows, 'pop-up-menu')
     if (microbreakWinLocal) {
       microbreakWinLocal.on('close', (e) => {
-        if (settings.get('showBreaksAsRegularWindows')) {
-          if (!appIsQuitting && !microbreakWinLocal.fullScreen) {
-            e.preventDefault()
-          }
+        if (breakPlanner.scheduler.timeLeft > 0 && settings.get('microbreakStrictMode')) {
+          // FIXME this will still log when postponing break
+          log.info('Stretchly: preventing closing break window as in strict mode')
+          e.preventDefault()
         }
       })
       microbreakWinLocal.on('closed', () => {
@@ -922,10 +938,10 @@ function startBreak () {
     breakWinLocal.setAlwaysOnTop(!showBreaksAsRegularWindows, 'pop-up-menu')
     if (breakWinLocal) {
       breakWinLocal.on('close', (e) => {
-        if (settings.get('showBreaksAsRegularWindows')) {
-          if (!appIsQuitting && !breakWinLocal.fullScreen) {
-            e.preventDefault()
-          }
+        if (breakPlanner.scheduler.timeLeft > 0 && settings.get('breakStrictMode')) {
+          // FIXME this will still log when postponing break
+          log.info('Stretchly: preventing closing break window as in strict mode')
+          e.preventDefault()
         }
       })
       breakWinLocal.on('closed', () => {
@@ -1214,13 +1230,16 @@ function getTrayMenuTemplate () {
     })
   }
 
-  if (breakPlanner.scheduler.reference === 'finishMicrobreak' && settings.get('microbreakStrictMode') &&
-    !settings.get('showBreakActionsInStrictMode')) {
-    // nothing
-  } else if (breakPlanner.scheduler.reference === 'finishBreak' && settings.get('breakStrictMode') &&
-    !settings.get('showBreakActionsInStrictMode')) {
-    // nothing
-  } else if (!(breakPlanner.isPaused || breakPlanner.dndManager.isOnDnd || breakPlanner.appExclusionsManager.isSchedulerCleared)) {
+  if ((breakPlanner.scheduler.reference === 'finishMicrobreak' && settings.get('microbreakStrictMode') &&
+        !settings.get('showTrayMenuInStrictMode')) ||
+      (breakPlanner.scheduler.reference === 'finishBreak' && settings.get('breakStrictMode') &&
+      !settings.get('showTrayMenuInStrictMode'))
+  ) {
+    // empty menu, we are in strict mode
+    return trayMenu
+  }
+
+  if (!(breakPlanner.isPaused || breakPlanner.dndManager.isOnDnd || breakPlanner.appExclusionsManager.isSchedulerCleared)) {
     let submenu = []
     if (settings.get('microbreak')) {
       submenu = submenu.concat([{
@@ -1250,12 +1269,6 @@ function getTrayMenuTemplate () {
         updateTray()
       }
     })
-  } else if (breakPlanner.scheduler.reference === 'finishMicrobreak' && settings.get('microbreakStrictMode') &&
-    !settings.get('showBreakActionsInStrictMode')) {
-    // nothing
-  } else if (breakPlanner.scheduler.reference === 'finishBreak' && settings.get('breakStrictMode') &&
-    !settings.get('showBreakActionsInStrictMode')) {
-    // nothing
   } else if (!(breakPlanner.dndManager.isOnDnd || breakPlanner.appExclusionsManager.isSchedulerCleared)) {
     trayMenu.push({
       label: i18next.t('main.pause'),
