@@ -370,8 +370,8 @@ To hide Stretchly icon in menubar/tray, set the value of `showTrayIcon` from `tr
 
 Note that this will disable graphical way of opening Stretchly Preferences. To access Preferences, you will have to use command line options (ie: `stretchly preferences` on Linux).
 
-#### Show break actions (Skip, Pause, Reset) in Strict Mode
-If you want to show options 'Skip to next break', 'Pause' or 'Reset Breaks' even while in Strict mode, set `showBreakActionsInStrictMode` to `true`.
+#### Show tray menu in Strict Mode
+If you want to show tray menu even while in Strict mode, set `showTrayMenuInStrictMode` to `true`.
 
 ## Contributor Preferences
 

@@ -73,5 +73,5 @@ module.exports = {
   skipToNextMiniBreakShortcut: '',
   skipToNextLongBreakShortcut: '',
   resetBreaksShortcut: '',
-  showBreakActionsInStrictMode: false
+  showTrayMenuInStrictMode: false
 }

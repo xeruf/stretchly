@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Added
 - Bengali, Catalan, Greek and Serbian translations
+- it is not possible to close app during break that is in strict mode
 
 ### Fixed
 - error when end break shortcut is not set
@@ -16,6 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - improved break window loading
 - updated many translations
 - better icons for "Show time in tray"
+- `showBreakActionsInStrictMode` migrated to `showTrayMenuInStrictMode`
 
 ## [1.16.0] - 2024-08-11
 ### Added
