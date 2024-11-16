@@ -136,24 +136,24 @@
     ]
   },
   "devDependencies": {
-    "@vitest/coverage-istanbul": "^2.1.2",
+    "@vitest/coverage-istanbul": "^2.1.5",
     "cross-env": "^7.0.3",
-    "electron": "^32.2.0",
-    "electron-builder": "^25.1.7",
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8",
     "husky": "^9.1.6",
     "rimraf": "^6.0.1",
     "spectron": "^19.0.0",
     "standard": "^17.1.2",
-    "vitest": "^2.1.2"
+    "vitest": "^2.1.5"
   },
   "dependencies": {
     "@electron/remote": "^2.1.2",
     "auto-launch": "^6.0.0-rc1",
     "dbus-final": "github:Jelmerro/dbus-final",
-    "electron-log": "^5.2.0",
+    "electron-log": "^5.2.2",
     "electron-store": "^8.2.0",
     "humanize-duration": "^3.32.1",
-    "i18next": "^23.15.2",
+    "i18next": "^23.16.5",
     "i18next-fs-backend": "^2.3.2",
     "luxon": "^3.5.0",
     "macos-notification-state": "^3.0.0",
