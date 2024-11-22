@@ -690,7 +690,7 @@ function startMicrobreak () {
   nextIdea = null
 
   if (settings.get('microbreakStartSoundPlaying') && !settings.get('silentNotifications')) {
-    processWin.webContents.send('playSound', settings.get('mimiBreakAudio'), settings.get('volume'))
+    processWin.webContents.send('playSound', settings.get('miniBreakAudio'), settings.get('volume'))
   }
 
   for (let localDisplayId = 0; localDisplayId < numberOfDisplays(); localDisplayId++) {
