@@ -27,9 +27,9 @@ The latest official **installers** and **portable versions** for macOS, Windows 
 ### macOS
 
 It is recommended to install *Stretchly* with [Homebrew](https://brew.sh/) by running the folowing command.
-See [Application Signing](#application-signing).
+See [Application Signing](#application-signing) for details.
 ```zsh
-brew update && brew install --cask stretchly
+brew update && brew install --cask --no-quarantine stretchly
 ```
 
 When upgrading, run the following command.
