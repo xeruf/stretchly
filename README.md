@@ -434,7 +434,7 @@ Feel free to join in the [development](https://github.com/hovancik/stretchly/blo
 - [git](https://git-scm.com/)
 - [Github account](https://github.com/), if you'd like to upstream your changes
 
-Now you can clone the repo with `git clone https://github.com/hovancik/stretchly.git`. Change to the new created directory and run `npm i` to install node packages needed.
+Now you can clone the repo with `git clone https://github.com/hovancik/stretchly.git`. Change to the new created directory and run `npm i` to install node packages needed. If your system is running Python 3.12 and newer, you also need to install `setuptools`, for example with `pip install setuptools`, as `distutils` have been [deprecated](https://docs.python.org/3/library/distutils.html).
 
 Read on.
 
