@@ -668,6 +668,22 @@ function startBreakNotification () {
   updateTray()
 }
 
+function getBlurredBackgroundWindowOptions () {
+  if (!settings.get('blurredBackground')) {
+    return {}
+  }
+
+  switch (process.platform) {
+    case 'darwin':
+      return {
+        vibrancy: 'hud',
+        visualEffectState: 'active'
+      }
+    default:
+      return {}
+  }
+}
+
 function startMicrobreak () {
   // don't start another break if break running
   if (microbreakWins) {
@@ -704,6 +720,7 @@ function startMicrobreak () {
       show: false,
       backgroundThrottling: false,
       transparent: true,
+      ...getBlurredBackgroundWindowOptions(),
       backgroundColor: calculateBackgroundColor(settings.get('miniBreakColor')),
       skipTaskbar: !showBreaksAsRegularWindows,
       focusable: showBreaksAsRegularWindows,
@@ -852,6 +869,7 @@ function startBreak () {
       show: false,
       backgroundThrottling: false,
       transparent: true,
+      ...getBlurredBackgroundWindowOptions(),
       backgroundColor: calculateBackgroundColor(settings.get('mainColor')),
       skipTaskbar: !showBreaksAsRegularWindows,
       focusable: showBreaksAsRegularWindows,
@@ -1064,7 +1082,7 @@ function calculateBackgroundColor (color) {
   if (settings.get('transparentMode')) {
     opacityMultiplier = settings.get('opacity')
   }
-  return color + Math.round(opacityMultiplier * 255).toString(16)
+  return color + Math.round(opacityMultiplier * 255).toString(16).padStart(2, '0')
 }
 
 function loadIdeas () {

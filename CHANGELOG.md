@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Bengali, Catalan, Greek and Serbian translations
 - it is not possible to close app during break that is in strict mode
 - `logs` command line option to show location of logs
+- advanced option to make break windows' background blurred
 
 ### Fixed
 - error when end break shortcut is not set
