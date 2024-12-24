@@ -5,11 +5,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+## [1.17.0] - 2024-12-24
 ### Added
 - Bengali, Catalan, Greek and Serbian translations
 - it is not possible to close app during break that is in strict mode
 - `logs` command line option to show location of logs
-- advanced option to make break windows' background blurred
+- advanced option to make break windows' background blurred (macOS)
 
 ### Fixed
 - error when end break shortcut is not set
@@ -772,7 +773,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - resume/pause functionality for reminder
 - scripts for creating installers for OS X, Windows, Linux
 
-[Unreleased]: https://github.com/hovancik/stretchly/compare/v1.16.0...HEAD
+[Unreleased]: https://github.com/hovancik/stretchly/compare/v1.17.0...HEAD
+[1.16.0]: https://github.com/hovancik/stretchly/compare/v1.16.0...v1.17.0
 [1.16.0]: https://github.com/hovancik/stretchly/compare/v1.15.1...v1.16.0
 [1.15.1]: https://github.com/hovancik/stretchly/compare/v1.15.0...v1.15.1
 [1.15.0]: https://github.com/hovancik/stretchly/compare/v1.14.1...v1.15.0
