@@ -70,7 +70,8 @@
       ],
       "extendInfo": {
         "LSBackgroundOnly": 1,
-        "LSUIElement": 1
+        "LSUIElement": 1,
+        "NSFocusStatusUsageDescription": "Stretchly will respect Do Not Disturb mode"
       }
     },
     "linux": {
