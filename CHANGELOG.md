@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - improved break window loading
+- improve DND detection for Linux
 - updated many translations
 - better icons for "Show time in tray"
 - `showBreakActionsInStrictMode` migrated to `showTrayMenuInStrictMode`
