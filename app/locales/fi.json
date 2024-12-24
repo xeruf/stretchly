@@ -158,7 +158,11 @@
     "1": "Toinen näyttö",
     "2": "Kolmas näyttö",
     "3": "Neljäs näyttö",
-    "4": "Viides näyttö"
+    "4": "Viides näyttö",
+    "timeToBreakInTray": "Tauon paikka",
+    "showBreaksAsRegularWindows": "Näytä tauko ikkunat perus ikkunoina",
+    "cursor": "Seuraa hiirtä",
+    "showTrayIcon": "Näytä ilmoituspalkissa"
   },
   "utils": {
     "none_one": "{{count}}",
