@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Fixed
+- Ubuntu Mate DND detection
+
 ## [1.17.0] - 2024-12-24
 ### Added
 - Bengali, Catalan, Greek and Serbian translations
