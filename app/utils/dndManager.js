@@ -44,7 +44,7 @@ class DndManager extends EventEmitter {
   }
 
   async _isDndEnabledLinux () {
-    const de = process.env.ORIGINAL_ORIGINAL_XDG_CURRENT_DESKTOP.toLowerCase()
+    const de = process.env.ORIGINAL_XDG_CURRENT_DESKTOP.toLowerCase()
     // https://specifications.freedesktop.org/mime-apps-spec/latest/file.html
     // https://specifications.freedesktop.org/menu-spec/latest/onlyshowin-registry.html
 
