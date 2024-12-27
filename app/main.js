@@ -1496,8 +1496,12 @@ ipcMain.on('show-debug', function (event) {
   const breaknumber = breakPlanner.breakNumber
   const postponesnumber = breakPlanner.postponesNumber
   const doNotDisturb = breakPlanner.dndManager.isOnDnd
-  const settingsFile = settings.path
-  const logsFile = log.transports.file.getFile().path
+  let settingsFile = settings.path
+  let logsFile = log.transports.file.getFile().path
+  if (process.windowsStore) {
+    settingsFile = settingsFile.replace('Roaming', 'Local\\Packages\\33881JanHovancik.stretchly_24fg4m0zq65je\\LocalCache\\Roaming')
+    logsFile = logsFile.replace('Roaming', 'Local\\Packages\\33881JanHovancik.stretchly_24fg4m0zq65je\\LocalCache\\Roaming')
+  }
   event.sender.send('debugInfo', reference, timeleft,
     breaknumber, postponesnumber, settingsFile, logsFile, doNotDisturb)
 })
