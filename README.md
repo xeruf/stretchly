@@ -105,8 +105,9 @@ For Natural breaks, you might need some packages too (`libxss-dev`).
 If *Stretchly* is not starting, you might need to run:
 ```sh
 sudo sysctl kernel.unprivileged_userns_clone=1
+sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
 ```
-Read more [here](https://github.com/electron/electron/issues/17972). Depending on your distro, you probably want to do something similar to this, so the preferences are kept after reboot: Add `kernel.unprivileged_userns_clone=1` to `/etc/sysctl.d/00-local-userns.conf` and reboot.
+Read more [here](https://github.com/electron/electron/issues/17972). Depending on your distro, you probably want to do something similar to this, so the preferences are kept after reboot: Add `kernel.unprivileged_userns_clone=1` and `kernel.apparmor_restrict_unprivileged_userns=0` to `/etc/sysctl.d/00-local-userns.conf` and reboot.
 
 ### Running from source
 
