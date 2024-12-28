@@ -31,7 +31,7 @@ class DndManager extends EventEmitter {
     this._checkDnd()
     log.info('Stretchly: starting Do Not Disturb monitoring')
     if (process.platform === 'linux') {
-      log.info(`System: Your Desktop seems to be ${process.env.ORIGINAL_XDG_CURRENT_DESKTOP}`)
+      log.info(`System: Your Desktop seems to be ${this._desktopEnviroment}.`)
     }
   }
 
@@ -43,10 +43,16 @@ class DndManager extends EventEmitter {
     log.info('Stretchly: stopping Do Not Disturb monitoring')
   }
 
-  async _isDndEnabledLinux () {
-    const de = process.env.ORIGINAL_XDG_CURRENT_DESKTOP.toLowerCase()
+  get _desktopEnviroment () {
+    // https://github.com/electron/electron/issues/40795
     // https://specifications.freedesktop.org/mime-apps-spec/latest/file.html
     // https://specifications.freedesktop.org/menu-spec/latest/onlyshowin-registry.html
+    return process.env.ORIGINAL_XDG_CURRENT_DESKTOP ||
+      process.env.XDG_CURRENT_DESKTOP || 'unknown'
+  }
+
+  async _isDndEnabledLinux () {
+    const de = this._desktopEnviroment.toLowerCase()
 
     switch (true) {
       case de.includes('kde'):
@@ -69,7 +75,7 @@ class DndManager extends EventEmitter {
           }
         } catch (e) { }
         break
-      case de.includes('gnome'):
+      case de.includes('gnome') || de.includes('unity'):
         try {
           const exec = this.util.promisify(require('node:child_process').exec)
           const { stdout } = await exec('gsettings get org.gnome.desktop.notifications show-banners')
@@ -100,7 +106,7 @@ class DndManager extends EventEmitter {
         return await this._getConfigValue('~/.config/lxqt/notifications.conf', 'doNotDisturb')
       default:
         if (!this._unsupDEErrorShown) {
-          log.info(`Stretchly: ${process.env.ORIGINAL_XDG_CURRENT_DESKTOP} not supported for DND detection, yet.`)
+          log.info(`Stretchly: ${this._desktopEnviroment} not supported for DND detection, yet.`)
           this._unsupDEErrorShown = true
         }
         return false
