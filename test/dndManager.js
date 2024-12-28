@@ -71,6 +71,11 @@ describe('dndManager', function () {
     resolve()
   }))
 
+  it('should return something for _desktopEnviroment', () => new Promise((resolve) => {
+    dndManager._desktopEnviroment.should.not.be.equal(null)
+    resolve()
+  }))
+
   afterEach(() => {
     dndManager.stop()
     dndManager = null
