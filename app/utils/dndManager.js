@@ -15,7 +15,7 @@ class DndManager extends EventEmitter {
       this.windowsFocusAssist = require('windows-focus-assist')
       this.windowsQuietHours = require('windows-quiet-hours')
     } else if (process.platform === 'darwin') {
-      this.macosNotificationState = require('macos-notification-state')
+      this.util = require('node:util')
     } else if (process.platform === 'linux') {
       this.bus = require('dbus-final').sessionBus()
       this.util = require('node:util')
@@ -124,7 +124,13 @@ class DndManager extends EventEmitter {
         const wqh = this.windowsQuietHours.getIsQuietHours()
         return wqh || (wfa !== -1 && wfa !== 0)
       } else if (process.platform === 'darwin') {
-        return this.macosNotificationState.getDoNotDisturb()
+        try {
+          const exec = this.util.promisify(require('node:child_process').exec)
+          const { stdout } = await exec('defaults read com.apple.controlcenter "NSStatusItem Visible FocusModes"')
+          if (stdout.replace(/[^0-9a-zA-Z]/g, '') === '1') {
+            return true
+          }
+        } catch (e) { }
       } else if (process.platform === 'linux') {
         return await this._isDndEnabledLinux()
       }
