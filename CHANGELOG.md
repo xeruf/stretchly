@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Fixed
 - Linux DND detection
+- improve macOS DND detection
 - debug info when from Windows Store
 
 ## [1.17.1] - 2024-12-25

@@ -70,8 +70,7 @@
       ],
       "extendInfo": {
         "LSBackgroundOnly": 1,
-        "LSUIElement": 1,
-        "NSFocusStatusUsageDescription": "Stretchly will respect Do Not Disturb mode"
+        "LSUIElement": 1
       }
     },
     "linux": {
@@ -157,7 +156,6 @@
     "i18next": "^23.16.8",
     "i18next-fs-backend": "^2.6.0",
     "luxon": "^3.5.0",
-    "macos-notification-state": "^3.0.0",
     "meeussunmoon": "^3.0.3",
     "ps-list": "7.2",
     "rtl-detect": "^1.1.2",
