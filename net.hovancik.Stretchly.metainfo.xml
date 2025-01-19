@@ -36,6 +36,16 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="1.17.2" date="2025-1-19">
+      <description>
+        <p>Fixed</p>
+        <ul>
+          <li>Linux DND detection</li>
+          <li>improve macOS DND detection</li>
+          <li>debug info when from Windows Store</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.17.1" date="2024-12-25">
       <description>
         <p>Fixed</p>
