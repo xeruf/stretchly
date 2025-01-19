@@ -162,7 +162,9 @@
     "timeToBreakInTray": "Tauon paikka",
     "showBreaksAsRegularWindows": "Näytä tauko ikkunat perus ikkunoina",
     "cursor": "Seuraa hiirtä",
-    "showTrayIcon": "Näytä ilmoituspalkissa"
+    "showTrayIcon": "Näytä ilmoituspalkissa",
+    "primary": "Ensisijainen näyttö",
+    "showCurrentTimeInBreaks": "Näytä paikallinen aika tauko ikkunassa"
   },
   "utils": {
     "none_one": "{{count}}",
