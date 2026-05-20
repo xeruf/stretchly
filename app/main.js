@@ -481,6 +481,10 @@ function onResumeOrUnlock () {
 }
 
 function startPowerMonitoring () {
+  powerMonitor.removeListener('suspend', onSuspendOrLock)
+  powerMonitor.removeListener('lock-screen', onSuspendOrLock)
+  powerMonitor.removeListener('resume', onResumeOrUnlock)
+  powerMonitor.removeListener('unlock-screen', onResumeOrUnlock)
   powerMonitor.on('suspend', onSuspendOrLock)
   powerMonitor.on('lock-screen', onSuspendOrLock)
   powerMonitor.on('resume', onResumeOrUnlock)
