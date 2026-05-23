@@ -143,7 +143,7 @@ if (!gotTheLock) {
           log.error('Stretchly: error parsing wait interval to ms because of invalid value')
           return
         }
-        if (cmd.options.title) nextIdea = [cmd.options.title]
+        if (cmd.options.title) nextIdea = cmd.options.title
         if (!cmd.options.noskip || delay) skipToMicrobreak(delay)
         break
       }
