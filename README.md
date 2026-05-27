@@ -31,8 +31,10 @@ Requires macOS Monterey (12) or later.
 It is recommended to install *Stretchly* with [Homebrew tap](https://github.com/hovancik/homebrew-stretchly) by running the following command.
 See [Application Signing](#application-signing) for details.
 ```zsh
-brew install --cask --no-quarantine hovancik/stretchly/stretchly
+brew install --cask hovancik/stretchly/stretchly
 ```
+
+> Note for macOS users: Homebrew recently disabled the `--no-quarantine` flag. As a result, macOS Gatekeeper may block the app on its first launch, showing an "unidentified developer" warning. To bypass this, go to `System Settings > Privacy & Security`, scroll down, and click Open Anyway next to the Stretchly alert. Alternatively, locate the app in Finder, Control-click (or Right-click) its icon, and select Open.
 
 When upgrading, run the following command.
 Don't forget to Quit Stretchly, first.
