@@ -374,6 +374,17 @@ To specify the size of the break window, set the value of `breakWindowHeight` an
 
 If you want Stretchly breaks to act as regular windows (have a titlebar, turn off always on top, be minimizable and focusable) set `showBreaksAsRegularWindows` to `true`.
 
+#### Show break countdown only on one screen
+
+By default, when breaks are shown on all screens (`allScreens: true`), the countdown and break idea are shown on every screen. If you'd rather keep the other screens blanked and show the countdown and idea on a single screen only, set `breakContentScreen` in the preferences file to one of:
+
+- `"all"` - show the content on all screens (default)
+- `"primary"` - show the content only on the primary screen
+- `"cursor"` - show the content only on the screen where the cursor is when the break starts
+- a screen index (e.g. `0`, `1`) - show the content only on that screen
+
+This option has no effect when `allScreens` is `false` or when `showBreaksAsRegularWindows` is `true`. Invalid values fall back to `"all"`.
+
 #### Pause/resume breaks only when specific command is running
 
 By editing `appExclusions` in preferences file, you can automatically control when Stretchly breaks are paused.
