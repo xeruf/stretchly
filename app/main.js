@@ -760,7 +760,12 @@ function startMicrobreak () {
       calculateBackgroundColor(settings.get('miniBreakColor')), danger, settings.get('breakHealthMode')]
   })
 
+  const contentDisplayId = displayManager.getContentDisplayId()
+  const useContentScreen = settings.get('allScreens') && !showBreaksAsRegularWindows && contentDisplayId !== -1
+  const emitOnId = useContentScreen ? contentDisplayId : 0
+
   for (let localDisplayId = 0; localDisplayId < displayManager.getDisplayCount(); localDisplayId++) {
+    const isBlank = useContentScreen && localDisplayId !== contentDisplayId
     const windowOptions = {
       width: Math.floor(displayManager.getDisplayWidth(localDisplayId) * settings.get('breakWindowWidth')),
       height: Math.floor(displayManager.getDisplayHeight(localDisplayId) * settings.get('breakWindowHeight')),
@@ -804,7 +809,9 @@ function startMicrobreak () {
       log.info('Stretchly: ready-to-show fired')
     })
 
-    ipcMain.once('mini-break-loaded', () => {
+    const onMiniBreakLoaded = (event) => {
+      if (event.sender !== microbreakWinLocal.webContents) return
+      ipcMain.off('mini-break-loaded', onMiniBreakLoaded)
       log.info('Stretchly: Mini break window loaded')
       if (showBreaksAsRegularWindows) {
         microbreakWinLocal.show()
@@ -822,7 +829,7 @@ function startMicrobreak () {
           microbreakWinLocal.setKiosk(settings.get('fullscreen'))
         }
       }
-      if (localDisplayId === 0) {
+      if (localDisplayId === emitOnId) {
         breakPlanner.emit('microbreakStarted', true)
         log.info('Stretchly: starting Mini break')
       }
@@ -832,9 +839,10 @@ function startMicrobreak () {
         }, 0)
       }
       updateTray()
-    })
+    }
+    ipcMain.on('mini-break-loaded', onMiniBreakLoaded)
 
-    microbreakWinLocal.loadURL(modalPath)
+    microbreakWinLocal.loadURL(isBlank ? modalPath + '?blank=1' : modalPath)
     microbreakWinLocal.setVisibleOnAllWorkspaces(true)
     microbreakWinLocal.setAlwaysOnTop(!showBreaksAsRegularWindows, 'pop-up-menu')
     if (microbreakWinLocal) {
@@ -845,6 +853,7 @@ function startMicrobreak () {
         }
       })
       microbreakWinLocal.once('closed', () => {
+        ipcMain.off('mini-break-loaded', onMiniBreakLoaded)
         microbreakWinLocal = null
       })
     }
@@ -916,7 +925,12 @@ function startBreak () {
       calculateBackgroundColor(settings.get('mainColor')), danger, settings.get('breakHealthMode')]
   })
 
+  const contentDisplayId = displayManager.getContentDisplayId()
+  const useContentScreen = settings.get('allScreens') && !showBreaksAsRegularWindows && contentDisplayId !== -1
+  const emitOnId = useContentScreen ? contentDisplayId : 0
+
   for (let localDisplayId = 0; localDisplayId < displayManager.getDisplayCount(); localDisplayId++) {
+    const isBlank = useContentScreen && localDisplayId !== contentDisplayId
     const windowOptions = {
       width: Math.floor(displayManager.getDisplayWidth(localDisplayId) * settings.get('breakWindowWidth')),
       height: Math.floor(displayManager.getDisplayHeight(localDisplayId) * settings.get('breakWindowHeight')),
@@ -960,7 +974,9 @@ function startBreak () {
       log.info('Stretchly: ready-to-show fired')
     })
 
-    ipcMain.once('long-break-loaded', () => {
+    const onLongBreakLoaded = (event) => {
+      if (event.sender !== breakWinLocal.webContents) return
+      ipcMain.off('long-break-loaded', onLongBreakLoaded)
       log.info('Stretchly: Long break window loaded')
       if (showBreaksAsRegularWindows) {
         breakWinLocal.show()
@@ -978,7 +994,7 @@ function startBreak () {
           breakWinLocal.setKiosk(settings.get('fullscreen'))
         }
       }
-      if (localDisplayId === 0) {
+      if (localDisplayId === emitOnId) {
         breakPlanner.emit('breakStarted', true)
         log.info('Stretchly: starting Long break')
       }
@@ -989,9 +1005,10 @@ function startBreak () {
         }, 0)
       }
       updateTray()
-    })
+    }
+    ipcMain.on('long-break-loaded', onLongBreakLoaded)
 
-    breakWinLocal.loadURL(modalPath)
+    breakWinLocal.loadURL(isBlank ? modalPath + '?blank=1' : modalPath)
     breakWinLocal.setVisibleOnAllWorkspaces(true)
     breakWinLocal.setAlwaysOnTop(!showBreaksAsRegularWindows, 'pop-up-menu')
     if (breakWinLocal) {
@@ -1002,6 +1019,7 @@ function startBreak () {
         }
       })
       breakWinLocal.once('closed', () => {
+        ipcMain.off('long-break-loaded', onLongBreakLoaded)
         breakWinLocal = null
       })
     }
