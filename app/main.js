@@ -33,19 +33,31 @@ import DisplayManager from './utils/displayManager.js'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
+let handlingUncaughtException = false
 process.on('uncaughtException', (err, _) => {
   log.error(err)
+  if (handlingUncaughtException) {
+    return
+  }
+  handlingUncaughtException = true
   const dialogOpts = {
     type: 'error',
     title: 'Stretchly',
-    message: 'An error occured while running Stretchly and it will now quit. To report the issue, click Report.',
+    message: 'An error occurred while running Stretchly and it will now quit. To report the issue, click Report.',
     buttons: ['Report', 'OK']
   }
-  dialog.showMessageBox(dialogOpts).then((returnValue) => {
+  dialog.showMessageBox(dialogOpts).then(async (returnValue) => {
     if (returnValue.response === 0) {
-      shell.openExternal('https://github.com/hovancik/stretchly/issues')
+      try {
+        await shell.openExternal('https://github.com/hovancik/stretchly/issues')
+      } catch (error) {
+        log.error(error)
+      }
     }
-    app.quit()
+  }).catch((error) => {
+    log.error(error)
+  }).finally(() => {
+    app.exit(1)
   })
 })
 
@@ -196,8 +208,8 @@ app.on('window-all-closed', () => {
   // do nothing, so app wont get closed
 })
 app.on('before-quit', (event) => {
-  if ((breakPlanner.scheduler.reference === 'finishMicrobreak' && settings.get('microbreakStrictMode')) ||
-      (breakPlanner.scheduler.reference === 'finishBreak' && settings.get('breakStrictMode'))
+  if ((breakPlanner?.scheduler?.reference === 'finishMicrobreak' && settings?.get('microbreakStrictMode')) ||
+      (breakPlanner?.scheduler?.reference === 'finishBreak' && settings?.get('breakStrictMode'))
   ) {
     log.info('Stretchly: preventing app closure (in break with strict mode)')
     event.preventDefault()
@@ -207,7 +219,6 @@ app.on('before-quit', (event) => {
     if (autostartManager) {
       autostartManager.disconnect()
     }
-    app.quit()
   }
 })
 
