@@ -752,6 +752,7 @@ function startMicrobreak () {
     const shortcut = settings.get('endBreakShortcut')
     if (shortcut) {
       globalShortcut.register(shortcut, () => {
+        log.info('Stretchly: end break shortcut pressed during Mini break')
         const passedPercent = (Date.now() - startTime) / breakDuration * 100
         if (passedPercent >= 100) {
           decreaseDanger(1)
@@ -917,6 +918,7 @@ function startBreak () {
     const shortcut = settings.get('endBreakShortcut')
     if (shortcut) {
       globalShortcut.register(shortcut, () => {
+        log.info('Stretchly: end break shortcut pressed during Long break')
         const passedPercent = (Date.now() - startTime) / breakDuration * 100
         if (passedPercent >= 100) {
           decreaseDanger(2)
@@ -1516,14 +1518,17 @@ function showNotification (text) {
 }
 
 ipcMain.on('postpone-mini-break', function (event) {
+  log.info('Stretchly: postpone button clicked during Mini break')
   postponeMicrobreak()
 })
 
 ipcMain.on('postpone-long-break', function (event) {
+  log.info('Stretchly: postpone button clicked during Long break')
   postponeBreak()
 })
 
 ipcMain.on('finish-mini-break', function (event, shouldPlaySound, manualAwaiting) {
+  log.info(`Stretchly: finish button clicked during Mini break (manualAwaiting: ${manualAwaiting})`)
   if (manualAwaiting) {
     decreaseDanger(1)
   } else {
@@ -1533,6 +1538,7 @@ ipcMain.on('finish-mini-break', function (event, shouldPlaySound, manualAwaiting
 })
 
 ipcMain.on('finish-long-break', function (event, shouldPlaySound, manualAwaiting) {
+  log.info(`Stretchly: finish button clicked during Long break (manualAwaiting: ${manualAwaiting})`)
   if (manualAwaiting) {
     decreaseDanger(2)
   } else {
