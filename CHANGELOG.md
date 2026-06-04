@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - fix crashes on system unlock
 - fix custom title for Mini break from command line
 - fix repeated crash windows after an error
+- improve double-click error prevention in breaks
 
 ## [1.21.0] - 2026-04-25
 ### Added

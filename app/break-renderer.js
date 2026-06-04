@@ -1,5 +1,6 @@
 import HtmlTranslate from './utils/htmlTranslate.js'
 import applyBreakHealthEffect from './utils/breakHealthEffect.js'
+import createRunOnce from './utils/runOnce.js'
 import './platform.js'
 
 window.onload = async (event) => {
@@ -24,11 +25,11 @@ window.onload = async (event) => {
   new HtmlTranslate(document).translate()
   applyBreakHealthEffect(danger, breakHealthMode, mainColor)
 
-  document.querySelector('#close').onclick = async event =>
-    await window.breaks.finishBreak(manualAwaiting)
+  const runOnce = createRunOnce()
 
-  document.querySelector('#postpone').onclick = async event =>
-    await window.breaks.postponeBreak()
+  document.querySelector('#close').onclick = runOnce(() => window.breaks.finishBreak(manualAwaiting))
+
+  document.querySelector('#postpone').onclick = runOnce(() => window.breaks.postponeBreak())
 
   document.querySelector('.break-idea').innerHTML = window.breaks.sanitizeIdea(idea[0])
   document.querySelector('.break-text').innerHTML = window.breaks.sanitizeIdea(idea[1])
@@ -67,9 +68,7 @@ window.onload = async (event) => {
 
   const locale = await window.settings.get('language')
 
-  manualFinishElement.onclick = async () => {
-    await window.breaks.finishBreak(manualAwaiting)
-  }
+  manualFinishElement.onclick = runOnce(() => window.breaks.finishBreak(manualAwaiting))
 
   setInterval(async () => {
     if (await window.settings.get('currentTimeInBreaks')) {
