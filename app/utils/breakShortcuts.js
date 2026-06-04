@@ -27,8 +27,10 @@ function onShortcut ({ name, settings, log, breakPlanner, functions }) {
   switch (name) {
     case 'pauseBreaksToggleShortcut':
       if (breakPlanner.isPaused) {
+        log.info('Stretchly: resuming breaks by shortcut')
         functions.resumeBreaks(false)
       } else {
+        log.info('Stretchly: pausing breaks by shortcut')
         functions.pauseBreaks(1)
       }
       break
@@ -53,6 +55,7 @@ function onShortcut ({ name, settings, log, breakPlanner, functions }) {
       functions.resetBreaks()
       break
     default: {
+      log.info(`Stretchly: pausing breaks by shortcut (${name})`)
       const interval = calculateInterval(name, settings)
       functions.pauseBreaks(interval)
       break
