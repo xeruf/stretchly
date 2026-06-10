@@ -11,9 +11,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - tray icon now follows the light/dark theme automatically; the manual "Inverted Monochrome" option was removed
+- improved tray icons
 
 ### Fixed
 - fix crashes on system unlock
+- fix window icon turning monochrome with the monochrome tray icon setting
 - fix custom title for Mini break from command line
 - fix repeated crash windows after an error
 - improve double-click error prevention in breaks

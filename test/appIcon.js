@@ -104,7 +104,7 @@ describe('appIcon', function () {
       reference: 'finishMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.trayIconFileName.should.equal('trayDark.png')
+    appIcon.trayIconFileName.should.equal('trayDark.ico')
   })
 
   it('trayIconFileName works for dark mode on Windows with time in tray', function () {
@@ -119,7 +119,7 @@ describe('appIcon', function () {
       reference: 'startMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.trayIconFileName.should.equal('trayDarkNumber2.png')
+    appIcon.trayIconFileName.should.equal('trayDarkNumber2.ico')
   })
 
   it('trayIconFileName works for dark mode on Windows with progress in tray', function () {
@@ -134,7 +134,7 @@ describe('appIcon', function () {
       reference: 'startMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.trayIconFileName.should.equal('trayDarkProgress20.png')
+    appIcon.trayIconFileName.should.equal('trayDarkProgress20.ico')
   })
 
   it('trayIconFileName works for paused dark mode on macOS', function () {
@@ -209,7 +209,7 @@ describe('appIcon', function () {
       reference: 'finishMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.trayIconFileName.should.equal('trayPausedDark.png')
+    appIcon.trayIconFileName.should.equal('trayPausedDark.ico')
   })
 
   it('trayIconFileName works for paused dark mode on Windows with time in tray', function () {
@@ -224,7 +224,7 @@ describe('appIcon', function () {
       reference: 'startMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.trayIconFileName.should.equal('trayPausedDark.png')
+    appIcon.trayIconFileName.should.equal('trayPausedDark.ico')
   })
 
   it('trayIconFileName works for light mode on macOS', function () {
@@ -344,7 +344,7 @@ describe('appIcon', function () {
       reference: 'finishMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.trayIconFileName.should.equal('tray.png')
+    appIcon.trayIconFileName.should.equal('tray.ico')
   })
 
   it('trayIconFileName works for light mode on Windows with tray on', function () {
@@ -359,7 +359,7 @@ describe('appIcon', function () {
       reference: 'startMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.trayIconFileName.should.equal('trayNumber2.png')
+    appIcon.trayIconFileName.should.equal('trayNumber2.ico')
   })
 
   it('trayIconFileName works for light mode on Windows with progress in tray', function () {
@@ -374,7 +374,7 @@ describe('appIcon', function () {
       reference: 'startMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.trayIconFileName.should.equal('trayProgress20.png')
+    appIcon.trayIconFileName.should.equal('trayProgress20.ico')
   })
 
   it('trayIconFileName works for paused light mode on macOS', function () {
@@ -449,7 +449,7 @@ describe('appIcon', function () {
       reference: 'finishMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.trayIconFileName.should.equal('trayPaused.png')
+    appIcon.trayIconFileName.should.equal('trayPaused.ico')
   })
 
   it('trayIconFileName works for paused light mode on Windows with time in tray', function () {
@@ -464,7 +464,7 @@ describe('appIcon', function () {
       reference: 'startMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.trayIconFileName.should.equal('trayPaused.png')
+    appIcon.trayIconFileName.should.equal('trayPaused.ico')
   })
 
   it('trayIconFileName works for monochrome on macOS', function () {
@@ -569,7 +569,7 @@ describe('appIcon', function () {
       reference: 'finishMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.trayIconFileName.should.equal('trayMonochrome.png')
+    appIcon.trayIconFileName.should.equal('trayMonochrome.ico')
   })
 
   it('trayIconFileName works for monochrome on Windows with time in tray', function () {
@@ -584,7 +584,7 @@ describe('appIcon', function () {
       reference: 'startMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.trayIconFileName.should.equal('trayMonochromeNumber2.png')
+    appIcon.trayIconFileName.should.equal('trayMonochromeNumber2.ico')
   })
 
   it('trayIconFileName works for monochrome on Windows with progress in tray', function () {
@@ -599,7 +599,7 @@ describe('appIcon', function () {
       reference: 'startMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.trayIconFileName.should.equal('trayMonochromeProgress20.png')
+    appIcon.trayIconFileName.should.equal('trayMonochromeProgress20.ico')
   })
 
   it('trayIconFileName works for paused monochrome on macOS', function () {
@@ -674,7 +674,7 @@ describe('appIcon', function () {
       reference: 'finishMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.trayIconFileName.should.equal('trayMonochromePaused.png')
+    appIcon.trayIconFileName.should.equal('trayMonochromePaused.ico')
   })
 
   it('trayIconFileName works for paused monochrome on Windows with time in tray', function () {
@@ -689,7 +689,7 @@ describe('appIcon', function () {
       reference: 'startMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.trayIconFileName.should.equal('trayMonochromePaused.png')
+    appIcon.trayIconFileName.should.equal('trayMonochromePaused.ico')
   })
 
   it('trayIconFileName works for monochrome on macOS (with dark on)', function () {
@@ -764,7 +764,7 @@ describe('appIcon', function () {
       reference: 'finishMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.trayIconFileName.should.equal('trayMonochrome.png')
+    appIcon.trayIconFileName.should.equal('trayMonochrome.ico')
   })
 
   it('trayIconFileName works for monochrome on Windows (with dark on) and time in tray', function () {
@@ -779,7 +779,7 @@ describe('appIcon', function () {
       reference: 'startMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.trayIconFileName.should.equal('trayMonochromeNumber2.png')
+    appIcon.trayIconFileName.should.equal('trayMonochromeNumber2.ico')
   })
 
   it('trayIconFileName works for paused monochrome on macOS (with dark on)', function () {
@@ -854,7 +854,7 @@ describe('appIcon', function () {
       reference: 'finishMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.trayIconFileName.should.equal('trayMonochromePaused.png')
+    appIcon.trayIconFileName.should.equal('trayMonochromePaused.ico')
   })
 
   it('trayIconFileName works for paused monochrome on Windows (with dark on) and time in tray', function () {
@@ -869,7 +869,7 @@ describe('appIcon', function () {
       reference: 'startMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.trayIconFileName.should.equal('trayMonochromePaused.png')
+    appIcon.trayIconFileName.should.equal('trayMonochromePaused.ico')
   })
 
   it('trayIconFileName works for inverted monochrome on macOS', function () {
@@ -959,7 +959,7 @@ describe('appIcon', function () {
       reference: 'finishMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.trayIconFileName.should.equal('trayMonochromeInverted.png')
+    appIcon.trayIconFileName.should.equal('trayMonochromeInverted.ico')
   })
 
   it('trayIconFileName works for inverted monochrome on Windows with time in tray', function () {
@@ -974,7 +974,7 @@ describe('appIcon', function () {
       reference: 'startMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.trayIconFileName.should.equal('trayMonochromeInvertedNumber2.png')
+    appIcon.trayIconFileName.should.equal('trayMonochromeInvertedNumber2.ico')
   })
 
   it('trayIconFileName works for inverted monochrome on Windows with progress in tray', function () {
@@ -989,7 +989,7 @@ describe('appIcon', function () {
       reference: 'startMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.trayIconFileName.should.equal('trayMonochromeInvertedProgress20.png')
+    appIcon.trayIconFileName.should.equal('trayMonochromeInvertedProgress20.ico')
   })
 
   it('trayIconFileName works for paused inverted monochrome on macOS', function () {
@@ -1064,7 +1064,7 @@ describe('appIcon', function () {
       reference: 'finishMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.trayIconFileName.should.equal('trayMonochromeInvertedPaused.png')
+    appIcon.trayIconFileName.should.equal('trayMonochromeInvertedPaused.ico')
   })
 
   it('trayIconFileName works for paused inverted monochrome on Windows with time in tray', function () {
@@ -1079,7 +1079,7 @@ describe('appIcon', function () {
       reference: 'startMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.trayIconFileName.should.equal('trayMonochromeInvertedPaused.png')
+    appIcon.trayIconFileName.should.equal('trayMonochromeInvertedPaused.ico')
   })
 
   it('trayIconFileName works for inverted monochrome on macOS (with dark on)', function () {
@@ -1154,7 +1154,7 @@ describe('appIcon', function () {
       reference: 'finishMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.trayIconFileName.should.equal('trayMonochromeInverted.png')
+    appIcon.trayIconFileName.should.equal('trayMonochromeInverted.ico')
   })
 
   it('trayIconFileName works for inverted monochrome on Windows (with dark on) with time in tray', function () {
@@ -1169,7 +1169,7 @@ describe('appIcon', function () {
       reference: 'startMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.trayIconFileName.should.equal('trayMonochromeInvertedNumber2.png')
+    appIcon.trayIconFileName.should.equal('trayMonochromeInvertedNumber2.ico')
   })
 
   it('trayIconFileName works for paused inverted monochrome on macOS (with dark on)', function () {
@@ -1244,7 +1244,7 @@ describe('appIcon', function () {
       reference: 'finishMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.trayIconFileName.should.equal('trayMonochromeInvertedPaused.png')
+    appIcon.trayIconFileName.should.equal('trayMonochromeInvertedPaused.ico')
   })
 
   it('trayIconFileName works for paused inverted monochrome on Windows (with dark on) with time in tray', function () {
@@ -1259,7 +1259,7 @@ describe('appIcon', function () {
       reference: 'startMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.trayIconFileName.should.equal('trayMonochromeInvertedPaused.png')
+    appIcon.trayIconFileName.should.equal('trayMonochromeInvertedPaused.ico')
   })
 
   it('windowIconFileName works for dark', function () {
@@ -1292,7 +1292,7 @@ describe('appIcon', function () {
     appIcon.windowIconFileName.should.equal('tray.png')
   })
 
-  it('windowIconFileName works for monochrome', function () {
+  it('windowIconFileName ignores monochrome and stays colour', function () {
     const params = {
       paused: true,
       monochrome: true,
@@ -1304,22 +1304,22 @@ describe('appIcon', function () {
       reference: 'finishMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.windowIconFileName.should.equal('trayMonochrome.png')
+    appIcon.windowIconFileName.should.equal('tray.png')
   })
 
-  it('windowIconFileName works for monochrome', function () {
+  it('windowIconFileName ignores monochrome and stays colour in dark mode', function () {
     const params = {
       paused: true,
       monochrome: true,
       inverted: true,
-      darkMode: false,
+      darkMode: true,
       platform: 'win32',
       trayIconStyle: 'default',
       timeToBreak: 2,
       reference: 'finishMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.windowIconFileName.should.equal('trayMonochromeInverted.png')
+    appIcon.windowIconFileName.should.equal('trayDark.png')
   })
 
   it('trayIconFileName does not show progress when paused', function () {

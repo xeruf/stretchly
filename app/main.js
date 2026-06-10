@@ -564,16 +564,8 @@ function trayIconPath () {
 }
 
 function windowIconPath () {
-  const unusedParams = null
-  const useDarkColors = nativeTheme.shouldUseDarkColors
   const params = {
-    paused: false,
-    monochrome: settings.get('useMonochromeTrayIcon'),
-    inverted: useDarkColors,
-    darkMode: useDarkColors,
-    platform: unusedParams,
-    timeToBreakInTrayString: unusedParams,
-    reference: unusedParams
+    darkMode: nativeTheme.shouldUseDarkColors
   }
   const windowIconFileName = new AppIcon(params).windowIconFileName
   return join(__dirname, '/images/app-icons', windowIconFileName)
