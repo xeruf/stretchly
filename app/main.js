@@ -309,6 +309,20 @@ async function initialize (isAppStart = true) {
             }
             store.delete('timeToBreakInTray')
           }
+        },
+        '1.22.0': store => {
+          if (store.has('useMonochromeInvertedTrayIcon')) {
+            if (store.get('useMonochromeInvertedTrayIcon')) {
+              store.set('trayIconThemeSource', 'dark')
+              log.info('Stretchly: migrating useMonochromeInvertedTrayIcon to trayIconThemeSource="dark"')
+            } else {
+              store.set('trayIconThemeSource', 'system')
+              log.info('Stretchly: migrating useMonochromeInvertedTrayIcon to trayIconThemeSource="system"')
+            }
+            store.delete('useMonochromeInvertedTrayIcon')
+          } else {
+            log.info('Stretchly: not migrating useMonochromeInvertedTrayIcon')
+          }
         }
       },
       watch: true
@@ -520,7 +534,15 @@ function closeWindows (windowArray) {
   return null
 }
 
+function trayIconUseDarkColors () {
+  const source = settings.get('trayIconThemeSource')
+  if (source === 'light') return false
+  if (source === 'dark') return true
+  return nativeTheme.shouldUseDarkColors
+}
+
 function trayIconPath () {
+  const useDarkColors = trayIconUseDarkColors()
   const params = {
     paused:
       breakPlanner.isPaused ||
@@ -528,8 +550,8 @@ function trayIconPath () {
       breakPlanner.naturalBreaksManager.isSchedulerCleared ||
       breakPlanner.appExclusionsManager.isSchedulerCleared,
     monochrome: settings.get('useMonochromeTrayIcon'),
-    inverted: settings.get('useMonochromeInvertedTrayIcon'),
-    darkMode: nativeTheme.shouldUseDarkColors,
+    inverted: useDarkColors,
+    darkMode: useDarkColors,
     platform: process.platform,
     trayIconStyle: settings.get('trayIconStyle'),
     timeToBreak: minutesRemaining(breakPlanner.timeToNextBreak),
@@ -543,11 +565,12 @@ function trayIconPath () {
 
 function windowIconPath () {
   const unusedParams = null
+  const useDarkColors = nativeTheme.shouldUseDarkColors
   const params = {
     paused: false,
     monochrome: settings.get('useMonochromeTrayIcon'),
-    inverted: settings.get('useMonochromeInvertedTrayIcon'),
-    darkMode: nativeTheme.shouldUseDarkColors,
+    inverted: useDarkColors,
+    darkMode: useDarkColors,
     platform: unusedParams,
     timeToBreakInTrayString: unusedParams,
     reference: unusedParams

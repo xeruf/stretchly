@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Added
 - advanced option `breakContentScreen` to show break countdown/idea only on the primary, cursor, or a specific screen while other screens stay blanked
+- advanced option `trayIconThemeSource` (`system`, `light`, or `dark`) to set the tray icon's light or dark variant
+
+### Changed
+- tray icon now follows the light/dark theme automatically; the manual "Inverted Monochrome" option was removed
 
 ### Fixed
 - fix crashes on system unlock

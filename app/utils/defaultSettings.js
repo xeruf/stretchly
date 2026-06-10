@@ -44,7 +44,7 @@ export default {
   posLatitude: 0.0,
   posLongitude: 0.0,
   useMonochromeTrayIcon: false,
-  useMonochromeInvertedTrayIcon: false,
+  trayIconThemeSource: 'system',
   silentNotifications: false,
   monitorDnd: true,
   miniBreakStartSound: 'silence',

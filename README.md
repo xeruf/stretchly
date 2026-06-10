@@ -224,7 +224,6 @@ Here are the preferences editable via the app. If values in the app does not sui
 - `allScreens` - show breaks on all screens
 - `language` - language
 - `useMonochromeTrayIcon` - use monochrome icon
-- `useMonochromeInvertedTrayIcon` - use inverted monochrome icon
 - `trayIconStyle` - icon style for menubar: default, time to break, or progress to break
 - `silentNotifications` - enable sounds
 - `monitorDnd` - monitor DND mode
@@ -357,6 +356,8 @@ If you'd like to disable the shortcut, set value to empty string `""`. That's th
 
 #### Appearance [![Contributor Preferences](https://img.shields.io/badge/Contributor_Preferences-✔-success)](#contributor-preferences)
 In the preferences file, change `themeSource: 'system'` to either `'light'` or `'dark'` to always use the specified theme.
+
+In the preferences file, change `trayIconThemeSource: 'system'` to either `'light'` or `'dark'` to force the tray icon's light or dark variant instead of following the system theme. `'system'` follows the same light/dark theme as the rest of Stretchly (the OS theme, or whatever `themeSource` is set to). On macOS this affects colour icons only; monochrome icons are tinted by the system.
 
 #### Break window color
 In the preferences file, change `mainColor` to whatever color you like.
