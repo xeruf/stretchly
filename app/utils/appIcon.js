@@ -39,13 +39,15 @@ class AppIcon {
       if (this.platform === 'darwin') {
         return `trayMacMonochrome${pausedString}${suffixString}Template.png`
       } else {
-        return `trayMonochrome${invertedMonochromeString}${pausedString}${suffixString}.png`
+        const extString = this.platform === 'win32' ? 'ico' : 'png'
+        return `trayMonochrome${invertedMonochromeString}${pausedString}${suffixString}.${extString}`
       }
     } else {
       if (this.platform === 'darwin') {
         return `trayMac${pausedString}${darkModeString}${suffixString}.png`
       } else {
-        return `tray${pausedString}${darkModeString}${suffixString}.png`
+        const extString = this.platform === 'win32' ? 'ico' : 'png'
+        return `tray${pausedString}${darkModeString}${suffixString}.${extString}`
       }
     }
   }

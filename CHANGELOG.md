@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - tray icon now follows the light/dark theme automatically; the manual "Inverted Monochrome" option was removed
+- improved tray icons
 
 ### Fixed
 - fix crashes on system unlock
