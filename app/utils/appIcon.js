@@ -53,14 +53,9 @@ class AppIcon {
   }
 
   get windowIconFileName () {
-    const invertedMonochromeString = this.inverted ? 'Inverted' : ''
     const darkModeString = this.darkMode ? 'Dark' : ''
 
-    if (this.monochrome) {
-      return `trayMonochrome${invertedMonochromeString}.png`
-    } else {
-      return `tray${darkModeString}.png`
-    }
+    return `tray${darkModeString}.png`
   }
 }
 

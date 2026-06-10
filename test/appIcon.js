@@ -1292,7 +1292,7 @@ describe('appIcon', function () {
     appIcon.windowIconFileName.should.equal('tray.png')
   })
 
-  it('windowIconFileName works for monochrome', function () {
+  it('windowIconFileName ignores monochrome and stays colour', function () {
     const params = {
       paused: true,
       monochrome: true,
@@ -1304,22 +1304,22 @@ describe('appIcon', function () {
       reference: 'finishMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.windowIconFileName.should.equal('trayMonochrome.png')
+    appIcon.windowIconFileName.should.equal('tray.png')
   })
 
-  it('windowIconFileName works for monochrome', function () {
+  it('windowIconFileName ignores monochrome and stays colour in dark mode', function () {
     const params = {
       paused: true,
       monochrome: true,
       inverted: true,
-      darkMode: false,
+      darkMode: true,
       platform: 'win32',
       trayIconStyle: 'default',
       timeToBreak: 2,
       reference: 'finishMicrobreak'
     }
     const appIcon = new AppIcon(params)
-    appIcon.windowIconFileName.should.equal('trayMonochromeInverted.png')
+    appIcon.windowIconFileName.should.equal('trayDark.png')
   })
 
   it('trayIconFileName does not show progress when paused', function () {
