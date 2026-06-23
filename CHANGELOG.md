@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Added
+- Windows installer now adds `stretchly` to PATH so CLI commands (e.g. `stretchly pause`) can be run from any terminal without specifying the full executable path
 - advanced option `breakContentScreen` to show break countdown/idea only on the primary, cursor, or a specific screen while other screens stay blanked
 - advanced option `trayIconThemeSource` (`system`, `light`, or `dark`) to set the tray icon's light or dark variant
 
