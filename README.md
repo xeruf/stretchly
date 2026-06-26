@@ -64,13 +64,6 @@ depends on if you're running an Intel or Apple Silicon chip.
 sudo xattr -r -d com.apple.quarantine /Applications/Stretchly.app
 ```
 
-If you install via [Homebrew](https://brew.sh), you can use the `--no-quarantine` flag to automatically apply the correct
-workaround.
-
-```bash
-brew install --cask --no-quarantine hovancik/stretchly/stretchly
-```
-
 Not sure which chip your computer has? [Here's how to tell](https://support.apple.com/en-us/HT211814).
 
 ### Windows
