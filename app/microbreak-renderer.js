@@ -66,12 +66,14 @@ window.onload = async (event) => {
   let manualAwaiting = false
 
   const locale = await window.settings.get('language')
+  const showCurrentTime = await window.settings.get('currentTimeInBreaks')
+  const currentTimeElement = showCurrentTime ? document.querySelector('.breaks > :last-child') : null
 
   manualFinishElement.onclick = runOnce(() => window.breaks.finishBreak(manualAwaiting))
 
   setInterval(async () => {
-    if (await window.settings.get('currentTimeInBreaks')) {
-      document.querySelector('.breaks > :last-child').innerHTML = (new Date()).toLocaleTimeString()
+    if (showCurrentTime) {
+      currentTimeElement.innerHTML = (new Date()).toLocaleTimeString()
     }
     const now = Date.now()
     const passed = now - started

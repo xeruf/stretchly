@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - tray icon now follows the light/dark theme automatically; the manual "Inverted Monochrome" option was removed
 - improved tray icons
 - reduced background polling for Do Not Disturb, natural breaks, and app exclusions to 2 seconds to lower energy usage (`appExclusionsCheckInterval` default raised from `1000` to `2000`)
+- reduced CPU and energy usage during breaks
 
 ### Fixed
 - fix Windows notifications not using Stretchly's name and icon when started via the `stretchly` command
