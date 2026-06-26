@@ -101,9 +101,10 @@ if (insideWindowsPortable()) {
 
 log.initialize({ preload: true })
 
-// https://stackoverflow.com/questions/65859634/notification-from-electron-shows-electron-app-electron/65863174#65863174
-if (process.platform === 'win32') {
-  app.setAppUserModelId('Stretchly')
+// Match the appId the installer stamps onto the shortcut so notifications show Stretchly.
+// Skip the Store build (OS-assigned AUMID) and unpackaged dev runs.
+if (process.platform === 'win32' && !insideWindowsStore() && app.isPackaged) {
+  app.setAppUserModelId('net.hovancik.stretchly')
 }
 
 const global = {

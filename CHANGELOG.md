@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - improved tray icons
 
 ### Fixed
+- fix Windows notifications not using Stretchly's name and icon when started via the `stretchly` command
 - fix crashes on system unlock
 - fix window icon turning monochrome with the monochrome tray icon setting
 - fix custom title for Mini break from command line
