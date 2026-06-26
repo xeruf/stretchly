@@ -20,6 +20,7 @@ describe('appExclusionsManager', function () {
       name: 'test-settings-appExclusionsManager',
       defaults: defaultSettings
     })
+    settings.set('appExclusionsCheckInterval', 1000)
     appExclusionsManager = null
   })
 

@@ -8,6 +8,7 @@ class NaturalBreaksManager extends EventEmitter {
     super()
     this.settings = settings
     this.usingNaturalBreaks = settings.get('naturalBreaks')
+    this.naturalBreaksCheckInterval = settings.get('naturalBreaksCheckInterval')
     this.timer = null
     this.isOnNaturalBreak = false
     this.isSchedulerCleared = false
@@ -60,7 +61,7 @@ class NaturalBreaksManager extends EventEmitter {
         this.emit('clearBreakScheduler')
       }
       lastIdleTime = idleTime
-    }, 1000)
+    }, this.naturalBreaksCheckInterval)
   }
 }
 

@@ -324,6 +324,12 @@ async function initialize (isAppStart = true) {
           } else {
             log.info('Stretchly: not migrating useMonochromeInvertedTrayIcon')
           }
+          if (store.get('appExclusionsCheckInterval') === 1000) {
+            store.set('appExclusionsCheckInterval', 2000)
+            log.info('Stretchly: migrating appExclusionsCheckInterval from 1000 to 2000')
+          } else {
+            log.info('Stretchly: not migrating appExclusionsCheckInterval')
+          }
         }
       },
       watch: true

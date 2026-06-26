@@ -11,6 +11,7 @@ class DndManager extends EventEmitter {
     super()
     this.settings = settings
     this.monitorDnd = settings.get('monitorDnd')
+    this.monitorDndCheckInterval = settings.get('monitorDndCheckInterval')
     this.timer = null
     this.isOnDnd = false
 
@@ -211,7 +212,7 @@ class DndManager extends EventEmitter {
         this.isOnDnd = false
         this.emit('dndFinished')
       }
-    }, 1000)
+    }, this.monitorDndCheckInterval)
   }
 }
 
