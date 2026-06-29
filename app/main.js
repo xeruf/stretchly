@@ -220,6 +220,10 @@ app.on('before-quit', (event) => {
     if (autostartManager) {
       autostartManager.disconnect()
     }
+    if (processWin && !processWin.isDestroyed()) {
+      processWin.destroy()
+      processWin = null
+    }
   }
 })
 
