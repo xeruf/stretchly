@@ -220,6 +220,10 @@ app.on('before-quit', (event) => {
     if (autostartManager) {
       autostartManager.disconnect()
     }
+    if (processWin && !processWin.isDestroyed()) {
+      processWin.destroy()
+      processWin = null
+    }
   }
 })
 
@@ -323,6 +327,12 @@ async function initialize (isAppStart = true) {
             store.delete('useMonochromeInvertedTrayIcon')
           } else {
             log.info('Stretchly: not migrating useMonochromeInvertedTrayIcon')
+          }
+          if (store.get('appExclusionsCheckInterval') === 1000) {
+            store.set('appExclusionsCheckInterval', 2000)
+            log.info('Stretchly: migrating appExclusionsCheckInterval from 1000 to 2000')
+          } else {
+            log.info('Stretchly: not migrating appExclusionsCheckInterval')
           }
         }
       },
