@@ -510,7 +510,7 @@ function onResumeOrUnlock () {
     pausedForSuspendOrLock = false
     resumeBreaks(false)
   } else {
-    // corrrect the planner for the time spent in suspend
+    // correct the planner for the time spent in suspend
     breakPlanner.correctScheduler()
   }
   updateTray()

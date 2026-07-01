@@ -80,8 +80,8 @@ describe('dndManager', function () {
     resolve()
   }))
 
-  it('should return something for _desktopEnviroment', () => new Promise((resolve) => {
-    dndManager._desktopEnviroment.should.not.be.equal(null)
+  it('should return something for _desktopEnvironment', () => new Promise((resolve) => {
+    dndManager._desktopEnvironment.should.not.be.equal(null)
     resolve()
   }))
 
