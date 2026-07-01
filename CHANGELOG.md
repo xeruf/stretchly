@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - fix repeated crash windows after an error
 - improve double-click error prevention in breaks
 - fix fullscreen breaks dropping out of their Space after a few seconds on macOS
+- fix app exclusion state not updating in some cases
 
 ## [1.21.0] - 2026-04-25
 ### Added
