@@ -37,7 +37,7 @@ class DndManager extends EventEmitter {
     if (!this.timer) return
     this.monitorDnd = false
     this.isOnDnd = false
-    clearTimeout(this.timer)
+    clearInterval(this.timer)
     this.timer = null
     if (this.__sessionBus) {
       this.__sessionBus.disconnect()

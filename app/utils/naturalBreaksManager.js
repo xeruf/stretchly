@@ -30,7 +30,7 @@ class NaturalBreaksManager extends EventEmitter {
     this.usingNaturalBreaks = false
     this.isOnNaturalBreak = false
     this.isSchedulerCleared = false
-    clearTimeout(this.timer)
+    clearInterval(this.timer)
     this.timer = null
     desktopIdle.stopMonitoring()
     log.info('Stretchly: stopping Idle time monitoring')

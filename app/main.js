@@ -697,7 +697,7 @@ function createSyncPreferencesWindow () {
 function planVersionCheck (seconds = 1) {
   if (settings.get('disableAppUpdateFeatures')) return
   if (updateChecker) {
-    clearInterval(updateChecker)
+    clearTimeout(updateChecker)
     updateChecker = null
   }
   updateChecker = setTimeout(checkVersion, seconds * 1000)
