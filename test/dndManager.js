@@ -63,6 +63,15 @@ describe('dndManager', function () {
     resolve()
   }))
 
+  it('does not create a second timer when start() is called twice', () => new Promise((resolve) => {
+    dndManager.stop()
+    dndManager.start()
+    const timer = dndManager.timer
+    dndManager.start()
+    dndManager.timer.should.be.equal(timer)
+    resolve()
+  }))
+
   it('should find correct value of LXQt config file', () => new Promise((resolve) => {
     dndManager._getConfigValue(join(__dirname, '/test-lxqt.conf'), 'doNotDisturb')
       .then(x => {

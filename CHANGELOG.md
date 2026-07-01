@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - improved tray icons
 - reduced background polling for Do Not Disturb, natural breaks, and app exclusions to 2 seconds to lower energy usage (`appExclusionsCheckInterval` default raised from `1000` to `2000`)
 - reduced CPU and energy usage during breaks
+- Do Not Disturb, natural breaks, and app exclusion monitoring are stopped while breaks are paused, to lower energy usage
 
 ### Fixed
 - fix Windows notifications not using Stretchly's name and icon when started via the `stretchly` command

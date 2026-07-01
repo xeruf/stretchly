@@ -18,6 +18,7 @@ class NaturalBreaksManager extends EventEmitter {
   }
 
   start () {
+    if (this.timer) return
     this.usingNaturalBreaks = true
     desktopIdle.startMonitoring()
     this._checkIdleTime()
@@ -25,6 +26,7 @@ class NaturalBreaksManager extends EventEmitter {
   }
 
   stop () {
+    if (!this.timer) return
     this.usingNaturalBreaks = false
     this.isOnNaturalBreak = false
     this.isSchedulerCleared = false

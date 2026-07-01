@@ -233,6 +233,36 @@ describe('appExclusionsManager', function () {
       })
     }))
 
+  it('stops monitoring with stop()', () =>
+    new Promise((resolve) => {
+      settings.set('appExclusions', [{ rule: 'pause', active: true, commands: ['xxxxxxxxxxxxxxx'] }])
+      appExclusionsManager = new AppExclusionsManager(settings)
+      appExclusionsManager.stop()
+      const cleared = appExclusionsManager.timer === null
+      cleared.should.be.equal(true)
+      resolve()
+    }))
+
+  it('does not create a second timer when start() is called twice', () =>
+    new Promise((resolve) => {
+      settings.set('appExclusions', [{ rule: 'pause', active: true, commands: ['xxxxxxxxxxxxxxx'] }])
+      appExclusionsManager = new AppExclusionsManager(settings)
+      const timer = appExclusionsManager.timer
+      appExclusionsManager.start()
+      appExclusionsManager.timer.should.be.equal(timer)
+      appExclusionsManager.stop()
+      resolve()
+    }))
+
+  it('does nothing when stop() is called while not monitoring', () =>
+    new Promise((resolve) => {
+      appExclusionsManager = new AppExclusionsManager(settings)
+      appExclusionsManager.stop()
+      const cleared = appExclusionsManager.timer === null
+      cleared.should.be.equal(true)
+      resolve()
+    }))
+
   afterEach(() => {
     if (settings) {
       unlinkSync(join(__dirname, '/test-settings-appExclusionsManager.json'))
