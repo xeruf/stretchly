@@ -29,7 +29,7 @@ class DndManager extends EventEmitter {
     this._checkDnd()
     log.info('Stretchly: starting Do Not Disturb monitoring')
     if (process.platform === 'linux') {
-      log.info(`System: Your Desktop seems to be ${this._desktopEnviroment}.`)
+      log.info(`System: Your Desktop seems to be ${this._desktopEnvironment}.`)
     }
   }
 
@@ -37,7 +37,7 @@ class DndManager extends EventEmitter {
     if (!this.timer) return
     this.monitorDnd = false
     this.isOnDnd = false
-    clearTimeout(this.timer)
+    clearInterval(this.timer)
     this.timer = null
     if (this.__sessionBus) {
       this.__sessionBus.disconnect()
@@ -46,14 +46,14 @@ class DndManager extends EventEmitter {
     log.info('Stretchly: stopping Do Not Disturb monitoring')
   }
 
-  get _desktopEnviroment () {
+  get _desktopEnvironment () {
     // https://specifications.freedesktop.org/mime-apps-spec/latest/file.html
     // https://specifications.freedesktop.org/menu-spec/latest/onlyshowin-registry.html
     return process.env.XDG_CURRENT_DESKTOP || 'unknown'
   }
 
   async _isDndEnabledLinux () {
-    const de = this._desktopEnviroment.toLowerCase()
+    const de = this._desktopEnvironment.toLowerCase()
     const sessionBus = this._getOrCreateSessionBus()
     switch (true) {
       case de.includes('kde'):
@@ -117,7 +117,7 @@ class DndManager extends EventEmitter {
         return await this._getConfigValue('~/.config/lxqt/notifications.conf', 'doNotDisturb')
       default:
         if (!this._unsupDEErrorShown) {
-          log.info(`Stretchly: ${this._desktopEnviroment} not supported for DND detection, yet.`)
+          log.info(`Stretchly: ${this._desktopEnvironment} not supported for DND detection, yet.`)
           this._unsupDEErrorShown = true
         }
         return false

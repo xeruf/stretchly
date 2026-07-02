@@ -510,7 +510,7 @@ function onResumeOrUnlock () {
     pausedForSuspendOrLock = false
     resumeBreaks(false)
   } else {
-    // corrrect the planner for the time spent in suspend
+    // correct the planner for the time spent in suspend
     breakPlanner.correctScheduler()
   }
   updateTray()
@@ -697,7 +697,7 @@ function createSyncPreferencesWindow () {
 function planVersionCheck (seconds = 1) {
   if (settings.get('disableAppUpdateFeatures')) return
   if (updateChecker) {
-    clearInterval(updateChecker)
+    clearTimeout(updateChecker)
     updateChecker = null
   }
   updateChecker = setTimeout(checkVersion, seconds * 1000)

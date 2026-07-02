@@ -80,7 +80,7 @@ class BreaksPlanner extends EventEmitter {
           log.info(`Stretchly: closing current and pausing breaks as 'pause' exclusion found running: '${exclusion}'`)
           this.emit('updateToolTip')
         } else {
-          this.appExclusionsManager.inOnException = false
+          this.appExclusionsManager.isOnAppExclusion = false
         }
       } else if (rule === 'resume') {
         if (!this.isPaused && this.scheduler.reference !== 'finishMicrobreak' && this.scheduler.reference !== 'finishBreak') {
@@ -104,7 +104,7 @@ class BreaksPlanner extends EventEmitter {
           log.info("Stretchly: pausing breaks as no 'resume' exclusion found running")
           this.emit('updateToolTip')
         } else {
-          this.appExclusionsManager.inOnException = true
+          this.appExclusionsManager.isOnAppExclusion = true
         }
       }
     })
