@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - improve double-click error prevention in breaks
 - fix fullscreen breaks dropping out of their Space after a few seconds on macOS
 - fix app exclusion state not updating in some cases
+- fix text selection on break screens allowing escape via the macOS force-click dictionary
 
 ## [1.21.0] - 2026-04-25
 ### Added
