@@ -4,7 +4,7 @@ import { join } from 'path'
 import DndManager from '../app/utils/dndManager'
 import Store from 'electron-store'
 import defaultSettings from '../app/utils/defaultSettings'
-import { unlink } from 'node:fs'
+import { rm } from 'node:fs/promises'
 
 const timeout = process.env.CI ? 30000 : 10000
 
@@ -72,25 +72,22 @@ describe('dndManager', function () {
     resolve()
   }))
 
-  it('should find correct value of LXQt config file', () => new Promise((resolve) => {
-    dndManager._getConfigValue(join(__dirname, '/test-lxqt.conf'), 'doNotDisturb')
-      .then(x => {
-        x.should.be.equal(true)
-      })
-    resolve()
-  }))
+  it('should find correct value of LXQt config file', async () => {
+    const value = await dndManager._getConfigValue(join(__dirname, '/test-lxqt.conf'), 'doNotDisturb')
+    value.should.be.equal(true)
+  })
 
   it('should return something for _desktopEnvironment', () => new Promise((resolve) => {
     dndManager._desktopEnvironment.should.not.be.equal(null)
     resolve()
   }))
 
-  afterEach(() => {
+  afterEach(async () => {
     dndManager.stop()
     dndManager = null
 
     if (settings) {
-      unlink(join(__dirname, '/test-settings-dndManager.json'), (_) => {})
+      await rm(join(__dirname, '/test-settings-dndManager.json'), { force: true })
       settings = null
     }
   })
