@@ -91,6 +91,24 @@ function insideWindowsPortable () {
   return process.platform === 'win32' && !!process.env.PORTABLE_EXECUTABLE_DIR
 }
 
+function getLinuxDisplayBackend (ozonePlatform = '') {
+  if (process.platform !== 'linux') return null
+
+  const normalizedOzonePlatform = ozonePlatform.trim().toLowerCase()
+  if (normalizedOzonePlatform === 'wayland' || normalizedOzonePlatform === 'x11') {
+    return normalizedOzonePlatform
+  }
+
+  const normalizedSessionType = (process.env.XDG_SESSION_TYPE || '').trim().toLowerCase()
+  if (normalizedSessionType === 'wayland' || normalizedSessionType === 'x11') {
+    return normalizedSessionType
+  }
+
+  if (process.env.WAYLAND_DISPLAY) return 'wayland'
+  if (process.env.DISPLAY) return 'x11'
+  return null
+}
+
 export {
   formatTimeRemaining,
   formatElapsedDuration,
@@ -104,5 +122,6 @@ export {
   insideFlatpak,
   insideWindowsStore,
   insideSnap,
-  insideWindowsPortable
+  insideWindowsPortable,
+  getLinuxDisplayBackend
 }
