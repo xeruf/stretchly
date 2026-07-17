@@ -17,9 +17,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - reduced background polling for Do Not Disturb, natural breaks, and app exclusions to 2 seconds to lower energy usage (`appExclusionsCheckInterval` default raised from `1000` to `2000`)
 - reduced CPU and energy usage during breaks
 - Do Not Disturb, natural breaks, and app exclusion monitoring are stopped while breaks are paused, to lower energy usage
+- disable new end break shortcut registrations on native Wayland, where they could remain active after breaks and block the shortcut in other apps
 
 ### Fixed
-- disable the end break shortcut on native Wayland, where it could remain active after breaks and block the shortcut in other apps
 - fix Windows notifications not using Stretchly's name and icon when started via the `stretchly` command
 - fix crashes on system unlock
 - fix window icon turning monochrome with the monochrome tray icon setting
@@ -879,7 +879,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - resume/pause functionality for reminder
 - scripts for creating installers for OS X, Windows, Linux
 
-[Unreleased]: https://github.com/hovancik/stretchly/compare/v1.21.0...HEAD
+[Unreleased]: https://github.com/hovancik/stretchly/compare/v1.22.0...HEAD
+[1.22.0]: https://github.com/hovancik/stretchly/compare/v1.21.0...v1.22.0
 [1.21.0]: https://github.com/hovancik/stretchly/compare/v1.20.0...v1.21.0
 [1.20.0]: https://github.com/hovancik/stretchly/compare/v1.19.0...v1.20.0
 [1.19.0]: https://github.com/hovancik/stretchly/compare/v1.18.1...v1.19.0
