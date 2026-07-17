@@ -91,6 +91,7 @@ let updateChecker
 let currentTrayIconPath = null
 let currentTrayMenuTemplate = null
 let trayUpdateIntervalObj = null
+let endBreakShortcutSupported
 
 if (insideWindowsPortable()) {
   const portableDataPath = join(process.env.PORTABLE_EXECUTABLE_DIR, 'Data')
@@ -101,12 +102,6 @@ if (insideWindowsPortable()) {
 }
 
 log.initialize({ preload: true })
-
-const linuxDisplayBackend = getLinuxDisplayBackend(
-  app.commandLine.getSwitchValue('ozone-platform')
-)
-// TODO: Re-enable when Electron can unregister individual Wayland portal shortcuts.
-const endBreakShortcutSupported = linuxDisplayBackend !== 'wayland'
 
 // Match the appId the installer stamps onto the shortcut so notifications show Stretchly.
 // Skip the Store build (OS-assigned AUMID) and unpackaged dev runs.
@@ -240,6 +235,14 @@ async function initialize (isAppStart = true) {
   }
   // TODO maybe we should not reinitialize but handle everything when we save new values for preferences
   log.info(`Stretchly: ${isAppStart ? '' : 're'}initializing...`)
+  const linuxDisplayBackend = getLinuxDisplayBackend(
+    app.commandLine.getSwitchValue('ozone-platform')
+  )
+  // TODO: Re-enable when Electron can unregister individual Wayland portal shortcuts.
+  endBreakShortcutSupported = linuxDisplayBackend !== 'wayland'
+  if (isAppStart && !endBreakShortcutSupported) {
+    log.info('Stretchly: end break shortcut disabled on native Wayland')
+  }
 
   EventEmitter.setMaxListeners(200) // for watching Store changes
   if (!settings) {
