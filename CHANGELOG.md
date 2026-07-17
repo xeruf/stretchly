@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Do Not Disturb, natural breaks, and app exclusion monitoring are stopped while breaks are paused, to lower energy usage
 
 ### Fixed
+- disable the end break shortcut on native Wayland, where it could remain active after breaks and block the shortcut in other apps
 - fix Windows notifications not using Stretchly's name and icon when started via the `stretchly` command
 - fix crashes on system unlock
 - fix window icon turning monochrome with the monochrome tray icon setting

@@ -17,7 +17,8 @@ import { DateTime } from 'luxon'
 
 import {
   canPostpone, canSkip, formatTimeRemaining,
-  minutesRemaining, insideWindowsStore, insideFlatpak, insideSnap, insideWindowsPortable
+  minutesRemaining, insideWindowsStore, insideFlatpak, insideSnap, insideWindowsPortable,
+  getLinuxDisplayBackend
 } from './utils/utils.js'
 import IdeasLoader from './utils/ideasLoader.js'
 import BreaksPlanner from './breaksPlanner.js'
@@ -100,6 +101,12 @@ if (insideWindowsPortable()) {
 }
 
 log.initialize({ preload: true })
+
+const linuxDisplayBackend = getLinuxDisplayBackend(
+  app.commandLine.getSwitchValue('ozone-platform')
+)
+// TODO: Re-enable when Electron can unregister individual Wayland portal shortcuts.
+const endBreakShortcutSupported = linuxDisplayBackend !== 'wayland'
 
 // Match the appId the installer stamps onto the shortcut so notifications show Stretchly.
 // Skip the Store build (OS-assigned AUMID) and unpackaged dev runs.
@@ -776,7 +783,7 @@ function startMicrobreak () {
   ipcMain.handle('send-mini-break-data', (event) => {
     const startTime = Date.now()
     const shortcut = settings.get('endBreakShortcut')
-    if (shortcut) {
+    if (shortcut && endBreakShortcutSupported) {
       globalShortcut.register(shortcut, () => {
         log.info('Stretchly: end break shortcut pressed during Mini break')
         const passedPercent = (Date.now() - startTime) / breakDuration * 100
@@ -945,7 +952,7 @@ function startBreak () {
   ipcMain.handle('send-long-break-data', (event) => {
     const startTime = Date.now()
     const shortcut = settings.get('endBreakShortcut')
-    if (shortcut) {
+    if (shortcut && endBreakShortcutSupported) {
       globalShortcut.register(shortcut, () => {
         log.info('Stretchly: end break shortcut pressed during Long break')
         const passedPercent = (Date.now() - startTime) / breakDuration * 100
