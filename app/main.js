@@ -559,6 +559,7 @@ function trayIconUseDarkColors () {
   const source = settings.get('trayIconThemeSource')
   if (source === 'light') return false
   if (source === 'dark') return true
+  if (process.platform === 'win32') return nativeTheme.shouldUseDarkColorsForSystemIntegratedUI
   return nativeTheme.shouldUseDarkColors
 }
 

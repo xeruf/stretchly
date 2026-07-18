@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Fixed
+- tray icon system theme now follows the Windows mode used by the taskbar instead of the default app mode
 
 ## [1.22.0] - 2026-07-17
 ### Added
