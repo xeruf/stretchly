@@ -142,7 +142,7 @@ class DndManager extends EventEmitter {
         try {
           wfa = getFocusAssist().value
         } catch (e) { wfa = -1 } // getFocusAssist() throw an error if OS isn't windows
-        return wfa !== -1 && wfa !== 0
+        return wfa === 1 || wfa === 2
       } else if (process.platform === 'darwin') {
         const macOSMajorVersion = parseInt(process.getSystemVersion().split('.')[0])
         let cmd = ''
