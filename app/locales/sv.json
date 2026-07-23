@@ -22,7 +22,7 @@
     "continue": "Fortsätt",
     "cancel": "Avbryt",
     "preferences": "Preferenser",
-    "contributorPreferences": "Inställningar för bidgradsgivare",
+    "contributorPreferences": "Inställningar för bidragsgivare",
     "syncPreferences": "Inställningar för synkronisering"
   },
   "break": {
@@ -54,19 +54,19 @@
     },
     "schedule": {
       "miniBreaks": "Korta pauser:",
-      "miniBreaksInfo": "Korta pausa är korta pauser som tas regelbundet för att ge dig en chans att sträcka på dig och koppla av.",
+      "miniBreaksInfo": "Korta pauser är korta pauser som tas regelbundet för att ge dig en chans att sträcka på dig och koppla av.",
       "enableMiniBreaks": "Aktivera korta pauser",
       "breakFor": "Paus i:",
       "every": "Varje:",
       "showNotificationBeforeMiniBreak": "Visa avisering innan kort paus startar",
-      "enablePostponeMini": "Aktivera utskjutning för kort paus",
+      "enablePostponeMini": "Aktivera uppskjutning för kort paus",
       "longBreaks": "Långa pauser:",
       "longBreaksInfo": "Långa pauser tas mindre regelbundet, men är längre, vilket gör att du kan ta en längre paus från ditt arbete.",
       "enableLongBreaks": "Aktivera långa pauser",
       "showNotificationBeforeLongBreak": "Visa avisering innan lång paus startar",
-      "enablePostponeLong": "Aktivera utskjutning för lång paus",
+      "enablePostponeLong": "Aktivera uppskjutning för lång paus",
       "strictMode": "Strikt läge:",
-      "strictModeInfo": "Strikt läge hindrar dig från att hoppa över antingen korta pauser eller långa pauser och är utformad för att hjälpa disciplin.",
+      "strictModeInfo": "Strikt läge hindrar dig från att hoppa över antingen korta pauser eller långa pauser och är utformad för att hjälpa dig att hålla disciplinen.",
       "enableStrictMini": "Aktivera strikt läge för korta pauser",
       "enableStrictLong": "Aktivera strikt läge för långa pauser",
       "cantDisableBoth": "Det är inte möjligt att inaktivera båda typerna av pauser"
@@ -78,7 +78,7 @@
       "graphiteCrystal": "Grafitkristall",
       "coffeeKisses": "Kaffekyssar",
       "morningSwim": "Morgonbad",
-      "transparentMode": "Aktivera öppenhet",
+      "transparentMode": "Aktivera transparens",
       "sounds": "Ljud:",
       "enableSounds": "Aktivera ljud",
       "crystalGlass": "Kristallglas",
@@ -96,7 +96,7 @@
       "trayIconStyleTime": "Dags för paus"
     },
     "about": {
-      "tagline": "Appen för paustidspåminnelse",
+      "tagline": "Appen för pauspåminnelser",
       "version": "Version ",
       "latestVersion": "Senaste version ",
       "notifyNewVersion": "Meddela automatiskt om appuppdateringar",
@@ -110,12 +110,12 @@
     },
     "heart": {
       "loveStretchly": "Älska din Stretchly?",
-      "desc1": "Att ta regelbundna pauser när du använder en dator är vetenskapligt bevisat att det är viktigt för ditt fysiska och psykiska välbefinnande.",
+      "desc1": "Att ta regelbundna pauser när du använder dator är vetenskapligt bevisat viktigt för ditt fysiska och mentala välbefinnande.",
       "desc2": "Stretchly är gratis. Men du kan ge ditt stöd genom att donera och hjälpa oss att fortsätta förbättra Stretchly och släppa annan gratis programvara.",
       "becomeContributor": "Bli en beskyddare",
       "alreadyContributor": "Jag är redan en bidragsgivare",
       "authenticateUsing": "Autentisera med:",
-      "contributorPreferences": "Inställningar för bidgradsgivare",
+      "contributorPreferences": "Inställningar för bidragsgivare",
       "syncPreferences": "Synkroniseringsinställningar"
     }
   },
@@ -125,7 +125,7 @@
     "2": "Tredje bildskärmen",
     "3": "Fjärde bildskärmen",
     "4": "Femte bildskärmen",
-    "title": "Inställningar för bidgradsgivare",
+    "title": "Inställningar för bidragsgivare",
     "notifications": "Pausaviseringar:",
     "notificationsInfo": "Systemavisering som visas före pauser så att du kan förbereda dig för det.",
     "beforeLongBreak": "Lång paus:",
@@ -144,7 +144,7 @@
     "longBreaks": "Långa pauser:",
     "pauseUntilMorning": "Pausa till morgonen:",
     "pauseUntil": "Pausa till:",
-    "pauseUntilMorningInfo": "Ange till vilken tid 'Pausa till morgonen' ska pausa..",
+    "pauseUntilMorningInfo": "Ange till vilken tid ”Pausa till morgonen” ska gälla.",
     "welcomeWindow": "Välkomstfönster:",
     "showWelcomeWindow": "Visa välkomstfönstret vid nästa start",
     "opacityTheme": "Tema genomskinlighet:",
@@ -166,7 +166,7 @@
     "dark": "Mörkt",
     "system": "System",
     "cursor": "Följ markören",
-    "showBreaksAsRegularWindowsTitle": "Fungera som vanligt fönster:",
+    "showBreaksAsRegularWindowsTitle": "Fungera som vanliga fönster:",
     "showBreaksAsRegularWindows": "Visa pauser som vanliga fönster",
     "screen": "Övervaka för pauser:",
     "showOnMonitor": "Visa pauser på",
@@ -202,7 +202,7 @@
   },
   "welcome": {
     "title": "Välkommen till Stretchly",
-    "breakTimeReminderApp": "Appen för paustidspåminnelse",
+    "breakTimeReminderApp": "Appen för pauspåminnelser",
     "viewTutorial": "Visa handledning",
     "openPreferences": "Öppna inställningar",
     "getStarted": "Kom igång"
@@ -268,7 +268,7 @@
       "text": "Fokusera var 20:e minut i 20 sekunder på ett föremål på 20 fots avstånd."
     },
     "aaz": {
-      "text": "Används din uppmärksamhet klokt?"
+      "text": "Använder du din uppmärksamhet klokt?"
     },
     "abj": {
       "text": "Stå upp och luta långsamt huvudet mot axeln med samma hand tills du känner en sträckning."
@@ -432,7 +432,7 @@
     },
     "abd": {
       "title": "Gapande",
-      "text": "Gäspning kan vara väldigt användbart, eftersom det producerar tårar för att fukta och smörja ögonen."
+      "text": "Att gäspa kan vara väldigt användbart, eftersom det producerar tårar för att fukta och smörja ögonen."
     },
     "abe": {
       "title": "Fokusbyte",
