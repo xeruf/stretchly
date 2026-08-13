@@ -5,10 +5,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [1.22.1] - 2026-08-13
 ### Fixed
 - tray icon system theme now follows the Windows mode used by the taskbar instead of the default app mode
 - Do Not Disturb no longer stays active when Windows Focus Assist is unsupported
 - improve LXQt DND detection
+- snap build
+
+### Changed
+- updated many translations
 
 ## [1.22.0] - 2026-07-17
 ### Added
@@ -885,7 +891,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - resume/pause functionality for reminder
 - scripts for creating installers for OS X, Windows, Linux
 
-[Unreleased]: https://github.com/hovancik/stretchly/compare/v1.22.0...HEAD
+[Unreleased]: https://github.com/hovancik/stretchly/compare/v1.22.1...HEAD
+[1.22.1]: https://github.com/hovancik/stretchly/compare/v1.22.0...v1.22.1
 [1.22.0]: https://github.com/hovancik/stretchly/compare/v1.21.0...v1.22.0
 [1.21.0]: https://github.com/hovancik/stretchly/compare/v1.20.0...v1.21.0
 [1.20.0]: https://github.com/hovancik/stretchly/compare/v1.19.0...v1.20.0
