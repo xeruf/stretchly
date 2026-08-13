@@ -1,6 +1,6 @@
 {
   "name": "Stretchly",
-  "version": "1.22.0",
+  "version": "1.22.1",
   "description": "The break time reminder app",
   "main": "app/main.js",
   "type": "module",
@@ -139,7 +139,7 @@
   "devDependencies": {
     "@vitest/coverage-istanbul": "^4.1.10",
     "cross-env": "^10.1.0",
-    "electron": "^43.2.0",
+    "electron": "^43.4.0",
     "electron-builder": "^26.15.7",
     "husky": "^9.1.7",
     "jsdom": "^30.0.1",
@@ -150,12 +150,12 @@
   "dependencies": {
     "@particle/dbus-next": "^0.11.4",
     "auto-launch": "^6.0.0-rc1",
-    "dompurify": "^3.4.12",
+    "dompurify": "^3.4.13",
     "electron-log": "^5.4.4",
     "electron-store": "^11.0.2",
     "humanize-duration": "^3.34.0",
     "i18next": "^26.3.6",
-    "i18next-fs-backend": "^2.6.6",
+    "i18next-fs-backend": "^2.6.7",
     "luxon": "^3.7.2",
     "meeussunmoon": "^3.1.0",
     "node-desktop-idle-v2": "^1.1.26",
