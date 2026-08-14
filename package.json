@@ -119,6 +119,9 @@
     "nsisWeb": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true
+    },
+    "snap": {
+      "base": "core22"
     }
   },
   "standard": {
